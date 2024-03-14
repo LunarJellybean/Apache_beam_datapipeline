@@ -11,7 +11,7 @@ public interface Options extends PipelineOptions {
     void setInputFile(String value);
 
     @Description("Path of the output file")
-    @Default.String("gs://bucket-wiseen/dataflow/output-2.txt")
+    @Default.String("gs://projectdata-202403-bucket/dataflow/output.txt")
     String getOutputFile();
     void setOutputFile(String value);
 }
