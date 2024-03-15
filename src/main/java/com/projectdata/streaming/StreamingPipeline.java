@@ -12,7 +12,7 @@ public class StreamingPipeline {
         Options options = PipelineOptionsFactory.fromArgs(args).withValidation().as(Options.class);
         Pipeline p = Pipeline.create(options);
 
-        //Reading from public dataset
+        //Reading from public dataset containing King Lear text
         PCollection<String> input = p.apply(("Read"), TextIO.read().from("gs://apache-beam-samples/shakespeare/kinglear.txt"));
         PDone done = input.apply(("Write"), TextIO.write().to("gs://projectdata-202403-bucket/dataflow/output.txt"));
 
