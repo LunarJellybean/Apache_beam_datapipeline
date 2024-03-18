@@ -19,7 +19,9 @@ public class Datapipeline {
 
         PCollection<String> transformedData = extractedData.apply("Transform", ParDo.of(new Transformation()));
 
-        PDone done = transformedData.apply(("Write"), TextIO.write().to("gs://projectdata-202403-bucket/dataflow/output.txt"));
+//        PDone done = transformedData.apply(("Write"), TextIO.write().to("gs://projectdata-202403-bucket/dataflow/output.txt"));
+        PDone done = transformedData.apply(("Write"), TextIO.write().to("gs://projectdata-202403-bucket/dataflow/transformed-output.txt"));
+        //update the file name else it will override the existing file
 
         PipelineResult result = p.run();
         try {
