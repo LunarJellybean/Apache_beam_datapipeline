@@ -1,4 +1,4 @@
-package com.projectdata.streaming;
+package com.projectdata.pipeline;
 
 import org.apache.beam.sdk.options.PipelineOptions;
 
