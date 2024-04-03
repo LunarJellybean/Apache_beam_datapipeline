@@ -1,0 +1,9 @@
+{
+  "source": {
+    "inputFilePath": "gs://projectdata-202403-bucket/dataflow/zillow.csv"
+  },
+  "sink": {
+    "successfulOutputFilePath": "gs://projectdata-202403-bucket/dataflow/zillow-result.txt",
+    "failedOutputFilePath": "gs://projectdata-202403-bucket/dataflow/zillow-unknown.txt"
+  }
+}
