@@ -1,5 +1,7 @@
 package com.projectdata.pipeline;
 
+import com.projectdata.pipeline.textio.model.config.Config;
+import com.projectdata.pipeline.textio.util.ConfigUtil;
 import org.apache.beam.sdk.Pipeline;
 import org.apache.beam.sdk.PipelineResult;
 import org.apache.beam.sdk.coders.StringUtf8Coder;
@@ -16,14 +18,18 @@ public class Datapipeline {
         Options options = PipelineOptionsFactory.fromArgs(args).withValidation().as(Options.class);
         Pipeline p = Pipeline.create(options);
 
+        Config config = ConfigUtil.loadConfig(options.getConfigPath());
+
 
 //        //Reading from public dataset containing King Lear text
 //        PCollection<String> extractedData = p.apply(("Read"), TextIO.read().from("gs://apache-beam-samples/shakespeare/kinglear.txt"));
 //                            //Reading from a public bucket
 
-        //We are dropping a file to the bucket
-        PCollection<String> extractedData = p.apply(("Extract"),
-                TextIO.read().from("gs://projectdata-202403-bucket/dataflow/zillow.csv"));
+//        //We are dropping a file to the bucket
+//        PCollection<String> extractedData = p.apply(("Extract"),
+//                TextIO.read().from("gs://projectdata-202403-bucket/dataflow/zillow.csv"));
+
+        PCollection<String> extractedData = p.apply("Extract", TextIO.read().from(config.getSource().getInputFilePath()));
 
 
 
